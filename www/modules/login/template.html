@@ -1,0 +1,36 @@
+<div ng-controller="loginController" id="login" class="fullHeight">
+    <div class="cover"></div>
+    <div class="formContainer">
+        <div class="random block left fullHeight"></div>
+        <div class="form block left fullHeight">
+            <img src="img/logo.png" class="logo" />
+            <div class="inputContainer">
+                <div class="inputIcon block left">
+                    <i class="ion-at"></i>
+                </div>
+                <input type="email" class="input" placeholder="Correo electrónico" ng-model="login.username" ng-enter="login.go()" ng-focus="cleanWarning()"/>
+                <div class="clearBoth"></div>
+            </div>
+            <div class="inputContainer">
+                <div class="inputIcon block left">
+                    <i class="ion-locked"></i>
+                </div>
+                <input type="password" class="input" placeholder="Contraseña" ng-model="login.password" ng-enter="login.go()" ng-focus="cleanWarning()"/>
+                <div class="clearBoth"></div>
+            </div>
+            <div class="warning" ng-class="{show:$root.loginError || $root.blocked}">
+                <span ng-show="$root.loginError">Tu correo electrónico y contraseña no coinciden.</span>
+                <span ng-show="$root.blocked">Tu o el Partner al que perteneces han sido bloqueados por su administrador.</span>
+            </div>
+<!--            <div class="warning" ng-class="$root.blocked"></div>-->
+            <md-button class="loginButton" ng-click="login.go()">ENTRAR</md-button>
+        </div>
+    </div>
+    <div class="footer">
+        <p>
+            <a href="http://pentcloud.com" target="_blank">Términos</a> y
+            <a href="http://pentcloud.com" target="_blank"><span style="margin-right:10px;">Condiciones</a> |
+            <span style="margin-left:10px;">Pentcloud LLC. @ 2015</span>
+        </p>
+    </div>
+</div>

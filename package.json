@@ -1,0 +1,17 @@
+{
+  "name": "projectname",
+  "version": "0.1.0",
+  "description": "Project description",
+  "main": "server.js",
+  "author": "Pentcloud, LLC.",
+  "license": "*",
+  "dependencies": {
+    "body-parser": "^1.8.3",
+    "express": "^4.9.4",
+    "jwt-simple": "^0.2.0",
+    "lusca": "^1.4.1",
+    "md5": "^2.0.0",
+    "mysql": "^2.5.4",
+    "request": "^2.62.0"
+  }
+}

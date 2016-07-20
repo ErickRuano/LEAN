@@ -1,0 +1,53 @@
+//FULL BACKGROUND COVER
+@mixin fullBackgroundCoverCenter($url) {
+    background: url($url) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+//FULL BACKGROUND COVER
+@mixin fullBackgroundCover($url, $xpos, $ypos) {
+    background: url($url) no-repeat $xpos $ypos;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+//BLUR
+@mixin blur($blur) {
+    -webkit-filter: blur($blur);
+    -moz-filter: blur($blur);
+    -o-filter: blur($blur);
+    -ms-filter: blur($blur);
+    filter: blur($blur);
+}
+//COVER
+@mixin fullCover ($r, $g, $b, $a) {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba($r, $g, $b, $a);
+}
+//BORDER-RADIUS
+@mixin borderRadius($border){
+    -webkit-border-radius: $border;
+    -moz-border-radius: $border;
+    border-radius: $border;
+}
+@mixin borderRadiusPartial($tl, $tr, $br, $bl ){
+    -webkit-border-top-left-radius: $tl;
+    -webkit-border-top-right-radius: $tr;
+    -webkit-border-bottom-right-radius: $br;
+    -webkit-border-bottom-left-radius: $bl;
+    -moz-border-radius-topleft: $tl;
+    -moz-border-radius-topright: $tr;
+    -moz-border-radius-bottomright: $br;
+    -moz-border-radius-bottomleft: $bl;
+    border-top-left-radius: $tl;
+    border-top-right-radius: $tr;
+    border-bottom-right-radius: $br;
+    border-bottom-left-radius: $bl;
+}

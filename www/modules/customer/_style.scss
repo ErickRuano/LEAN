@@ -1,0 +1,266 @@
+html,
+body {
+    overflow-x: hidden;
+}
+#customer {
+    // overflow-y: auto;
+    // max-height: 575px;
+    .header {
+        width: 100%;
+        background: white;
+        padding: 3%;
+        padding-bottom: 1%;
+        position: relative;
+        .actions {
+            position: absolute;
+            top: 10%;
+            right: 20px;
+            width: auto;
+            color: #6d8189;
+            .actionIcon {
+                font-size: 20px;
+                margin: 0;
+            }
+        }
+        .infoContainer {
+            color: #58585b;
+            .name {
+                font-size: 20px;
+                font-weight: 700;
+            }
+            .detail {
+                margin-top: 30px;
+                margin-bottom: 20px;
+                .info {
+                    font-size: 14px;
+                    color: #213b4a;
+                    font-weight: 400;
+                    i {
+                        color: #5bc4c3;
+                        font-size: 16px;
+                        margin-right: 10px;
+                        font-weight: 400;
+                    }
+                    span {
+                        font-weight: 700;
+                        margin-left: 5px;
+                    }
+                }
+                .button {
+                    background: #d1d2d4;
+                    color: #939597;
+                    font-size: 12px;
+                    text-transform: capitalize;
+                    margin: 0;
+                    padding: 0px 20px;
+                }
+            }
+        }
+    }
+    .content {
+        padding: 5px;
+        .tabContainer {
+            background: white;
+            .tabBar {
+                text-align: center;
+                background: #edecec;
+                .tab {
+                    @include transition(all, 0.2s, $bezier);
+                    @include borderRadius(0px);
+                    line-height: normal;
+                    min-height: inherit;
+                    padding: 20px 0;
+                    color: #213b4a;
+                    font-size: 18px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    margin: 0;
+                    &.selected {
+                        background: white !important;
+                    }
+                    &:hover {
+                        background: #ccc;
+                    }
+                }
+            }
+        }
+        .tabContent {
+            background: white;
+            padding: 3% 5%;
+            padding-bottom: 1%;
+            font-size: 14px;
+            .productsContainer {
+                margin-top: 2.5%;
+                font-weight: 700;
+                .name {
+                    img {
+                        width: 24px;
+                        vertical-align: middle;
+                        margin-right: 10px;
+                    }
+                }
+                .licenses {
+                    span {
+                        margin-left: 50%;
+                    }
+                    input {
+                        outline: none;
+                        background: #f4f8fa;
+                        width: 48px;
+                        height: 24px;
+                        margin-left: 10px;
+                        text-align: center;
+                    }
+                }
+                .price {
+                    text-align: center;
+                }
+                .subtotal {
+                    text-align: right;
+                    margin-right: 10px;
+                }
+            }
+            .total {
+                background: #939597;
+                color: white;
+                text-align: right;
+                padding: 15px 10px;
+                margin-top: 10px;
+                font-weight: 700;
+                font-size: 17px;
+            }
+            .confirm {
+                @include borderRadius(10px);
+                margin-top: 30px;
+                background: #8cc63e;
+                width: 25%;
+                margin-left: 37.5%;
+                color: white;
+                padding: 5px 0;
+            }
+            .formContainer {
+                margin-top: 20px;
+                .inputContainer {
+                    //                    margin-right: 3%;
+                    .inputIcon {
+                        width: 40px;
+                        height: 40px;
+                        background: #5bc4c3;
+                        color: white;
+                        font-size: 20px;
+                        padding: 8px 0 0 11px;
+                    }
+                    .input {
+                        height: 40px;
+                        outline: none;
+                        color: #808284;
+                        width: 75%;
+                        background: #f8f9f9;
+                        font-size: 12px;
+                    }
+                    .add {
+                        @include borderRadius(10px);
+                        background: #00af9d;
+                        width: 95%;
+                        color: white;
+                        padding: 3px 0;
+                        margin: 0;
+                    }
+                }
+            }
+            .search {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                width: 100%;
+                padding: 10px;
+                padding-right: 32px;
+                outline: none;
+                border: 1px solid #e8e9e9;
+                background: #f8f9f9 url("../img/search_gray.png") no-repeat 100% 50%;
+                color: #a7a9ab;
+                height: 40px;
+            }
+            .tableContainer {
+                width: 100%;
+                margin-top: 40px;
+                thead {
+                    background: #6a6b6b;
+                    color: white;
+                    th {
+                        padding: 10px 0;
+                        font-size: 12px;
+                        font-weight: 400;
+                        text-align: center;
+                        //                        text-transform: capitalize;
+                        .iconHeader {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+                }
+                tbody {
+                    color: #020302;
+                    tr {
+                        @include transition(all, 0.3s, $bezier);
+                        border: 1px solid #e8e9e9;
+                        cursor: pointer;
+                        &.even {
+                            border: 0 solid transparent !important;
+                            background: #eff7f8;
+                        }
+                        &:hover {
+                            background: #ddeef0;
+                        }
+                    }
+                    td {
+                        padding: 15px 0;
+                        font-size: 12px;
+                        font-weight: 700;
+                        text-align: center;
+                        color: #231f20;
+                        .actionIcon {
+                            font-size: 18px;
+                            margin: 0;
+                            margin-left: 5px;
+                            color: #6a6b6b;
+                            width: 32px;
+                            height: 32px;
+                            line-height: 32px;
+                        }
+                        md-checkbox {
+                            margin: 0;
+                            margin-left: 35px;
+                        }
+                    }
+                }
+            }
+            .subTabBar {
+                margin-bottom: 20px;
+                border-bottom: 3px solid #f1f1f2;
+                .subTab {
+                    @include transition(all, 0.2s, $bezier);
+                    @include borderRadius(0px);
+                    color: #231f20;
+                    background: white;
+                    border-bottom: 4px solid transparent;
+                    cursor: pointer;
+                    line-height: normal;
+                    min-height: inherit;
+                    padding: 10px;
+                    font-size: 16px;
+                    margin: 0;
+                    text-transform: capitalize;
+                    text-align: left;
+                    &.selected {
+                        border-bottom: 4px solid #5bc4c3 !important;
+                        font-weight: 700;
+                    }
+                    &:hover {
+                        border-bottom: 4px solid #cbecec;
+                    }
+                }
+            }
+        }
+    }
+}

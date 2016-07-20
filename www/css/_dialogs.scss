@@ -1,0 +1,125 @@
+$bezier: cubic-bezier(0.4,0.19,0.48,0.93);
+@mixin transition($prop, $time, $ease){
+    -webkit-transition: $prop $time $ease;
+	-moz-transition: $prop $time $ease;
+	-ms-transition: $prop $time $ease; /* IE10 is actually unprefixed */
+	-o-transition: $prop $time $ease;
+	transition: $prop $time $ease;
+}
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+.coreDialogTheater{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0.4;
+	background-color: #666;
+	// background-color: #222;
+	z-index: 10;
+}
+	.coreDialogVisible {
+
+		opacity: 1;
+		pointer-events:auto;
+		z-index: 11;
+		position: absolute;
+		top: 10%;
+		left: 0px;
+		width: 100%;
+		margin-bottom:10%;
+	}
+	.coreDialogHidden {
+		opacity: 0;
+		pointer-events:none;
+		z-index: 11;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+.coreDialogContainer{
+	@include transition(all, 0.4s, $bezier);
+	@include border-radius(24px);
+	position: absolute;
+	// width: 680px;
+	width: 80%;
+	height: auto;
+	background-color: #fff;
+	z-index: 11;
+	padding: 20px;
+	display: none;
+	overflow-y: auto;
+	margin-bottom:5%;
+	&.destroy{
+		@include transition(all, 0.2s, $bezier);
+		opacity: 0;
+	}
+
+	// &.beforeShown{
+	// 	@include transition(all, 0.4s, $bezier);
+	// 	width: 0px;
+	// 	opacity:0;
+	// }
+	// &.afterShown{
+	// 	@include transition(all, 0.4s, $bezier);
+	// 	// top: 45%;
+	// 	// left: 50%;
+	// }
+
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.coreDialogHeader{
+	margin-bottom: 24px;
+	width: 100%;
+	height: auto;
+	color: #404041;
+	font-family: lato;
+	font-size: 24px;
+	font-weight: 400;
+	z-index: 11;
+}
+
+.coreDialogBody{
+	margin-bottom: 24px;
+	width: 100%;
+	height: auto;
+	color: #404041;
+	font-family: lato;
+	font-size: 16px;
+	font-weight: 400;
+	z-index: 11;
+}
+
+.coreDialogFooter{
+	width: 100%;
+	height: 40px;
+	border-top-style: solid;
+	border-top-color: #fcfcfc;
+	border-top-width: 1px;
+	z-index: 11;
+}
+.coreDialogButton{
+	width: 32px;
+	height: 32px;
+	color: #fff;
+	font-family: lato;
+	font-size: 14px;
+	font-weight: 400;
+	margin: 5px;
+	display: inline-block;
+	margin-bottom: 0;
+	line-height: 32px;
+	cursor: pointer;
+}

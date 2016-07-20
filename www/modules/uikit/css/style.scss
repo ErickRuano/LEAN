@@ -1,0 +1,1468 @@
+/* Variables */
+$font-primary: #231f20;
+$bezier: cubic-bezier(0.4,0.19,0.48,0.93);
+*{
+	outline:none!important;
+}
+/* Mixins */
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin unselectable(){
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+}
+
+@mixin transition($prop, $time, $ease){
+    -webkit-transition: $prop $time $ease;
+	-moz-transition: $prop $time $ease;
+	-ms-transition: $prop $time $ease; /* IE10 is actually unprefixed */
+	-o-transition: $prop $time $ease;
+	transition: $prop $time $ease;
+}
+
+
+@mixin passit-color($color){
+	border: 2px $color solid;
+	background-color: $color;
+
+		&:hover{
+		    background-color: transparent;
+		   	color:$color;
+		}
+
+		&:active{
+		    background-color: $color;
+		    color: #fff;
+		}	
+}
+
+@mixin passiti-color($color){
+		    background-color: transparent;
+		   	color:$color;
+
+		&:hover{
+			border: 2px $color solid;
+			background-color: $color;
+		}
+
+		&:active{
+		    background-color: $color;
+		    color: #fff;
+		}	
+}
+
+@mixin pushit-color($color, $dark-color){	
+	background-color: $color;
+	border-bottom: 6px $dark-color solid;
+
+	&:hover{
+	    border-bottom: 5px $dark-color solid;
+	   	position:relative;
+	   	top:3px;
+	}
+
+	&:active{
+	 	border:none;
+	   	position:relative;
+	   	top:8px;
+	   	background-color: $dark-color;
+	}
+}
+
+/* Kill me please */
+.colorBlock{
+	width:100%;
+	height:96px;
+	position:relative;
+}
+.colorBlock .colorInfo{
+	width:100%;
+	height:32px;
+	opacity:0.5;
+	*{
+		margin-left:10px;
+	}
+}
+
+.bubble 
+{
+position: relative;
+width: 250px;
+height: 50px;
+padding: 0px;
+background: #231f20;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+color:#fff;line-height:50px;text-align:center;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #231f20 transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -15px;
+left: 110px;
+}
+
+
+
+
+
+
+
+/* UI Kit Fonts */
+/* Globals */
+.font-base{
+	font-family:'Lato';
+	font-weight:300;
+	-webkit-font-smoothing: antialiased;	
+}
+.header-font{	
+	font-family:'Lato';
+	font-weight:300;
+	color: $font-primary;
+	-webkit-font-smoothing: antialiased;
+}
+.body-font{	
+	font-family:'Lato';
+	font-weight:300;
+	color: $font-primary;
+	-webkit-font-smoothing: antialiased;	
+}
+/* Header 01 > 02 */
+h1 {
+	@extend .header-font;
+	font-size:24px;
+	span {
+		font-weight:400;
+	}
+}
+
+/* Subtitles 01 */
+h2 {
+	@extend .header-font;
+	font-size:16px;
+}
+
+/* Subtitles 02 */
+h3 {
+	@extend .header-font;
+	font-size:14px;
+}
+
+/* Comment */
+h4 {
+	@extend .header-font;
+	font-size:10px;
+	color:#a7a9ab;
+}
+
+/* Paragraphs */
+.p-regular{
+	@extend .body-font;
+	font-family:'Calibri';
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.p-min{
+	@extend .p-regular;
+	font-size:12px;
+}
+
+.p-max{
+	@extend .p-regular;
+	font-size:14px;
+}
+
+
+/* UI Kit Colors */
+/* Colors */
+$nightsky: #1d2841;
+$light-nightsky: #2b374e;
+$dark-nightsky: #12192C;
+
+$jeans: #34495d;
+$light-jeans: #44596b;
+$dark-jeans: #2c3e50;
+
+$oceansoul: #3097d1;
+$light-oceansoul: #44aad7;
+$dark-oceansoul: #2788c9;
+
+$breeze: #7ad0e7;
+$light-breeze: #97d8ea;
+$dark-breeze: #51c8ec;
+
+$blueberry: #2c2e63;
+$light-blueberry: #373b6d;
+$dark-blueberry: #262261;
+
+$weirdplum: #a064a9;
+$light-weirdplum: #a371af;
+$dark-weirdplum: #9355a3;
+
+$leaf: #8ecea7;
+$light-leaf: #a0d2b2;
+$dark-leaf: #75c699;
+
+$freshmint: #d7e9d2;
+$light-freshmint: #e0ecdc;
+$dark-freshmint: #c4e2bc;
+
+$aquarium: #99d5c9;
+$light-aquarium: #abdcd3;
+$dark-aquarium: #78cbc0;
+
+$sourorange: #ef8d5b;
+$light-sourorange: #f1946b;
+$dark-sourorange: #f47c36;
+
+$autumn: #ecb26b;
+$light-autumn: #f3bb7c;
+$dark-autumn: #f2af56;
+
+$cherry: #ef6060;
+$light-cherry: #f27475;
+$dark-cherry: #ef4d4a;
+
+$juice: #f37f69;
+$light-juice: #f58d7f;
+$dark-juice: #e76f5f;
+
+$sunnydays: #f8e36b;
+$light-sunnydays: #f8e493;
+$dark-sunnydays: #fddf00;
+
+$sunflower: #f7d15e;
+$light-sunflower: #f8e493;
+$dark-sunflower: #f8d57c;
+
+$silver: #e6e7e7;
+$light-silver: #edecec;
+$dark-silver: #cfd1d3;
+
+$fluffyclouds: #f3f4f4;
+$light-fluffyclouds: #f4f6f7;
+$dark-fluffyclouds: #e8e8e9;
+
+$cardigan: #4f4a4c;
+$light-cardigan: #605f60;
+$dark-cardigan: #231f20;
+
+$lollipop: #2cb6a3;
+$light-lollipop: #83cec4;
+$dark-lollipop: #118975;
+
+$apple: #8bc540;
+$light-apple: #cae096;
+$dark-apple: #5d8e3e;
+
+$cheddar: #FBAF3F;
+$light-cheddar: #FCC186;
+$dark-cheddar: #F6951D;
+
+.white{
+	background-color: #fff;
+	&.foreground{
+		background-color: inherit;
+		color: #fff;
+	}
+}
+
+.black{
+	background-color: #000;
+	&.foreground{
+		background-color: inherit;
+		color: #000;
+	}
+}
+
+.lollipop{
+	background-color: $lollipop;
+	&.light{
+		background-color: $light-lollipop;
+		&.foreground{
+			background-color: inherit;
+			color: $light-lollipop;
+		}
+	}
+	&.dark{
+		background-color: $dark-lollipop;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-lollipop;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $lollipop;
+	}
+
+}
+
+.apple{
+	background-color: $apple;
+	&.light{
+		background-color: $light-apple;
+		&.foreground{
+			background-color: inherit;
+			color: $light-apple;
+		}
+	}
+	&.dark{
+		background-color: $dark-apple;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-apple;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $apple;
+	}
+
+}
+
+.nightsky{
+	background-color: $nightsky;
+	&.light{
+		background-color: $light-nightsky;
+		&.foreground{
+			background-color: inherit;
+			color: $light-nightsky;
+		}
+	}
+	&.dark{
+		background-color: $dark-nightsky;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-nightsky;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $nightsky;
+	}
+
+}
+
+.jeans{
+	background-color: $jeans;
+	&.light{
+		background-color: $light-jeans;
+		&.foreground{
+			background-color: inherit;
+			color: $light-jeans;
+		}
+	}
+	&.dark{
+		background-color: $dark-jeans;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-jeans;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $jeans;
+	}
+}
+
+.oceansoul{
+	background-color: $oceansoul;
+	&.light{
+		background-color: $light-oceansoul;
+		&.foreground{
+			background-color: inherit;
+			color: $light-oceansoul;
+		}
+	}
+	&.dark{
+		background-color: $dark-oceansoul;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-oceansoul;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $oceansoul;
+	}
+}
+
+.breeze{
+	background-color: $breeze;
+	&.light{
+		background-color: $light-breeze;
+		&.foreground{
+			background-color: inherit;
+			color: $light-breeze;
+		}
+	}
+	&.dark{
+		background-color: $dark-breeze;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-breeze;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $breeze;
+	}
+}
+
+.blueberry{
+	background-color: $blueberry;
+	&.light{
+		background-color: $light-blueberry;
+		&.foreground{
+			background-color: inherit;
+			color: $light-blueberry;
+		}
+	}
+	&.dark{
+		background-color: $dark-blueberry;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-blueberry;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $blueberry;
+	}
+}
+
+.weirdplum{
+	background-color: $weirdplum;
+	&.light{
+		background-color: $light-weirdplum;
+		&.foreground{
+			background-color: inherit;
+			color: $light-weirdplum;
+		}
+	}
+	&.dark{
+		background-color: $dark-weirdplum;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-weirdplum;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $weirdplum;
+	}
+}
+
+.leaf{
+	background-color: $leaf;
+	&.light{
+		background-color: $light-leaf;
+		&.foreground{
+			background-color: inherit;
+			color: $light-leaf;
+		}
+	}
+	&.dark{
+		background-color: $dark-leaf;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-leaf;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $leaf;
+	}
+}
+
+.freshmint{
+	background-color: $freshmint;
+	&.light{
+		background-color: $light-freshmint;
+		&.foreground{
+			background-color: inherit;
+			color: $light-freshmint;
+		}
+	}
+	&.dark{
+		background-color: $dark-freshmint;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-freshmint;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $freshmint;
+	}
+}
+
+.aquarium{
+	background-color: $aquarium;
+	&.light{
+		background-color: $light-aquarium;
+		&.foreground{
+			background-color: inherit;
+			color: $light-aquarium;
+		}
+	}
+	&.dark{
+		background-color: $dark-aquarium;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-aquarium;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $aquarium;
+	}
+}
+
+.sourorange{
+	background-color: $sourorange;
+	&.light{
+		background-color: $light-sourorange;
+		&.foreground{
+			background-color: inherit;
+			color: $light-sourorange;
+		}
+	}
+	&.dark{
+		background-color: $dark-sourorange;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-sourorange;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $sourorange;
+	}
+}
+
+.autumn{
+	background-color: $autumn;
+	&.light{
+		background-color: $light-autumn;
+		&.foreground{
+			background-color: inherit;
+			color: $light-autumn;
+		}
+	}
+	&.dark{
+		background-color: $dark-autumn;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-autumn;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $autumn;
+	}
+}
+
+.cherry{
+	background-color: $cherry;
+	&.light{
+		background-color: $light-cherry;
+		&.foreground{
+			background-color: inherit;
+			color: $light-cherry;
+		}
+	}
+	&.dark{
+		background-color: $dark-cherry;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-cherry;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $cherry;
+	}
+}
+
+.juice{
+	background-color: $juice;
+	&.light{
+		background-color: $light-juice;
+		&.foreground{
+			background-color: inherit;
+			color: $light-juice;
+		}
+	}
+	&.dark{
+		background-color: $dark-juice;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-juice;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $juice;
+	}
+}
+
+.sunnydays{
+	background-color: $sunnydays;
+	&.light{
+		background-color: $light-sunnydays;
+		&.foreground{
+			background-color: inherit;
+			color: $light-sunnydays;
+		}
+	}
+	&.dark{
+		background-color: $dark-sunnydays;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-sunnydays;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $sunnydays;
+	}
+}
+
+.sunflower{
+	background-color: $sunflower;
+	&.light{
+		background-color: $light-sunflower;
+		&.foreground{
+			background-color: inherit;
+			color: $light-sunflower;
+		}
+	}
+	&.dark{
+		background-color: $dark-sunflower;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-sunflower;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $sunflower;
+	}
+}
+
+.silver{
+	background-color: $silver;
+	&.light{
+		background-color: $light-silver;
+		&.foreground{
+			background-color: inherit;
+			color: $light-silver;
+		}
+	}
+	&.dark{
+		background-color: $dark-silver;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-silver;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $silver;
+	}
+}
+
+.fluffyclouds{
+	background-color: $fluffyclouds;
+	&.light{
+		background-color: $light-fluffyclouds;
+		&.foreground{
+			background-color: inherit;
+			color: $light-fluffyclouds;
+		}
+	}
+	&.dark{
+		background-color: $dark-fluffyclouds;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-fluffyclouds;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $fluffyclouds;
+	}
+}
+
+.cardigan{
+	background-color: $cardigan;
+	&.light{
+		background-color: $light-cardigan;
+		&.foreground{
+			background-color: inherit;
+			color: $light-cardigan;
+		}
+	}
+	&.dark{
+		background-color: $dark-cardigan;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-cardigan;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $cardigan;
+	}
+}
+
+.cheddar{
+	background-color: $cheddar;
+	&.light{
+		background-color: $light-cheddar;
+		&.foreground{
+			background-color: inherit;
+			color: $light-cheddar;
+		}
+	}
+	&.dark{
+		background-color: $dark-cheddar;
+		&.foreground{
+			background-color: inherit;
+			color: $dark-cheddar;
+		}
+	}
+	&.foreground{
+		background-color: inherit;
+		color: $cheddar;
+	}
+}
+
+.cNightsky{
+	@extend .nightsky;
+}
+.cJeans{
+	@extend .jeans;
+}
+
+.cOceansoul{
+	@extend .oceansoul;
+}
+
+.cBreeze{
+	@extend .breeze;
+}
+
+.cBlueberry{
+	@extend .blueberry;
+}
+
+.cWeirdplum{
+	@extend .weirdplum;
+}
+
+.cLeaf{
+	@extend .leaf;
+}
+
+.cFreshmint{
+	@extend .freshmint;
+}
+
+.cAquarium{
+	@extend .aquarium;
+}
+
+.cSourorange{
+	@extend .sourorange;
+}
+
+.cAutumn{
+	@extend .autumn;
+}
+
+.cCherry{
+	@extend .cherry;
+}
+
+.cJuice{
+	@extend .juice;
+}
+
+.cSunnydays{
+	@extend .sunnydays;
+}
+
+.cSunflower{
+	@extend .sunflower;
+}
+
+.cSilver{
+	@extend .silver;
+}
+
+.cFluffyclouds{
+	@extend .fluffyclouds;
+}
+
+.cCardigan{
+	@extend .cardigan;
+}
+
+.cCheddar{
+	@extend .cardigan;
+}
+
+.cWhite{
+	@extend .white;
+}
+
+.cBlack{
+	@extend .black;
+}
+
+/* Buttons */
+
+.passit{   
+	@include transition(all, 0.2s, $bezier);
+	@include unselectable();
+	@extend .core-button;
+
+ 	width:140px;
+    height:48px;
+    line-height:32px;
+
+    padding-top:5px;
+
+   	border: 2px $nightsky solid;
+    cursor:pointer;
+    color:#fff;
+    font-family:'lato';
+    text-align:center;
+    font-size:16px;
+
+   	background-color: $nightsky;
+
+	&:hover{
+	    background-color: transparent;
+	   	color:$nightsky;
+	}
+
+	&:active{
+	    background-color:$nightsky;
+	    color:#fff;
+	}
+
+	&.small{
+		height:32px;
+		line-height:18px;
+	}
+
+	&.large{
+		height:64px;
+		line-height:58px;
+	}
+
+	&.micro{
+		height:24px;
+		line-height:8px;
+	}
+
+	&.nightsky{
+		@include passit-color($nightsky);
+	}
+	&.jeans{
+		@include passit-color($jeans);
+	}
+	&.oceansoul{
+		@include passit-color($oceansoul);
+	}
+	&.breeze{
+		@include passit-color($breeze);
+	}
+	&.blueberry{
+		@include passit-color($blueberry);
+	}
+	&.weirdplum{
+		@include passit-color($weirdplum);
+	}
+	&.leaf{
+		@include passit-color($leaf);
+	}
+	&.freshmint{
+		@include passit-color($freshmint);
+	}
+	&.aquarium{
+		@include passit-color($aquarium);
+	}
+	&.sourorange{
+		@include passit-color($sourorange);
+	}
+	&.autumn{
+		@include passit-color($autumn);
+	}
+	&.cherry{
+		@include passit-color($cherry);
+	}
+	&.juice{
+		@include passit-color($juice);
+	}
+	&.sunnydays{
+		@include passit-color($sunnydays);
+	}
+	&.sunflower{
+		@include passit-color($sunflower);
+	}
+	&.silver{
+		@include passit-color($silver);
+		color: $light-cardigan;
+	}
+	&.fluffyclouds{
+		@include passit-color($fluffyclouds);
+		color: $light-cardigan;
+	}
+	&.cardigan{
+		@include passit-color($cardigan);
+	}
+	&.cheddar{
+		@include passit-color($cheddar);
+	}
+	&.lollipop{
+		@include passit-color($lollipop);
+	}
+	&.apple{
+		@include passit-color($apple);
+	}
+
+
+}
+
+
+.passiti{   
+	@include transition(all, 0.2s, $bezier);
+	@include unselectable();
+	@extend .core-button;
+
+ 	width:140px;
+    height:48px;
+    line-height:32px;
+
+    padding-top:5px;
+
+	    background-color: transparent;
+	   	color:$nightsky;
+
+
+    cursor:pointer;
+    font-family:'lato';
+    text-align:center;
+    font-size:16px;
+
+
+	&:hover{
+	   	border: 2px $nightsky solid;
+	    color:#fff;
+	   	background-color: $nightsky;
+	}
+
+	&:active{
+	    background-color:$nightsky;
+	    color:#fff;
+	}
+
+	&.small{
+		height:32px;
+		line-height:18px;
+	}
+
+	&.large{
+		height:64px;
+		line-height:58px;
+	}
+
+	&.micro{
+		height:24px;
+		line-height:8px;
+	}
+
+	&.nightsky{
+		@include passiti-color($nightsky);
+	}
+	&.jeans{
+		@include passiti-color($jeans);
+	}
+	&.oceansoul{
+		@include passiti-color($oceansoul);
+	}
+	&.breeze{
+		@include passiti-color($breeze);
+	}
+	&.blueberry{
+		@include passiti-color($blueberry);
+	}
+	&.weirdplum{
+		@include passiti-color($weirdplum);
+	}
+	&.leaf{
+		@include passiti-color($leaf);
+	}
+	&.freshmint{
+		@include passiti-color($freshmint);
+	}
+	&.aquarium{
+		@include passiti-color($aquarium);
+	}
+	&.sourorange{
+		@include passiti-color($sourorange);
+	}
+	&.autumn{
+		@include passiti-color($autumn);
+	}
+	&.cherry{
+		@include passiti-color($cherry);
+	}
+	&.juice{
+		@include passiti-color($juice);
+	}
+	&.sunnydays{
+		@include passiti-color($sunnydays);
+	}
+	&.sunflower{
+		@include passiti-color($sunflower);
+	}
+	&.silver{
+		@include passiti-color($silver);
+		color: $light-cardigan;
+	}
+	&.fluffyclouds{
+		@include passiti-color($fluffyclouds);
+		color: $light-cardigan;
+	}
+	&.cardigan{
+		@include passiti-color($cardigan);
+	}
+	&.cheddar{
+		@include passiti-color($cheddar);
+	}
+	&.lollipop{
+		@include passiti-color($lollipop);
+	}
+	&.apple{
+		@include passiti-color($apple);
+	}
+
+
+}
+
+.core-button{
+	display:inline-block;
+	float:left;
+}
+.pushit{   
+	@include transition(all, 0.2s, $bezier);
+	@include unselectable();
+	@extend .core-button;
+
+ 	width:140px;
+    height:48px;
+    line-height:24px;
+
+    padding-top:5px;
+
+    border:none;
+    cursor:pointer;
+    color:#fff;
+    font-family:'lato';
+    text-align:center;
+    font-size:16px;
+
+   	border-bottom: 8px $dark-nightsky solid;
+   	background-color: $nightsky;
+
+	&:hover{
+	    border-bottom: 5px $dark-nightsky solid;
+	   	position:relative;
+	   	top:3px;
+	}
+
+	&:active{
+	 	border:none;
+	   	position:relative;
+	   	top:8px;
+	   	background-color: $dark-nightsky;
+	}
+
+	&.small{
+		height:32px;
+		line-height:18px;
+	}
+
+	&.large{
+		height:64px;
+		line-height:58px;
+	}
+
+	&.nightsky{
+		@include pushit-color($light-nightsky, $dark-nightsky);
+	}
+	&.jeans{
+		@include pushit-color($jeans, $dark-jeans);
+	}
+	&.oceansoul{
+		@include pushit-color($oceansoul, $dark-oceansoul);
+	}
+	&.breeze{
+		@include pushit-color($breeze, $dark-breeze);
+	}
+	&.blueberry{
+		@include pushit-color($blueberry, $dark-blueberry);
+	}
+	&.weirdplum{
+		@include pushit-color($weirdplum, $dark-weirdplum);
+	}
+	&.leaf{
+		@include pushit-color($leaf, $dark-leaf);
+	}
+	&.freshmint{
+		@include pushit-color($freshmint, $dark-freshmint);
+	}
+	&.aquarium{
+		@include pushit-color($aquarium, $dark-aquarium);
+	}
+	&.sourorange{
+		@include pushit-color($sourorange, $dark-sourorange);
+	}
+	&.autumn{
+		@include pushit-color($autumn, $dark-autumn);
+	}
+	&.cherry{
+		@include pushit-color($cherry, $dark-cherry);
+	}
+	&.juice{
+		@include pushit-color($juice, $dark-juice);
+	}
+	&.sunnydays{
+		@include pushit-color($sunnydays, $dark-sunnydays);
+	}
+	&.sunflower{
+		@include pushit-color($sunflower, $dark-sunflower);
+	}
+	&.silver{
+		@include pushit-color($silver, $dark-silver);
+		color: $light-cardigan;
+	}
+	&.fluffyclouds{
+		@include pushit-color($fluffyclouds, $dark-fluffyclouds);
+		color: $light-cardigan;
+	}
+	&.cardigan{
+		@include pushit-color($cardigan, $dark-cardigan);
+	}
+	&.cheddar{
+		@include pushit-color($cheddar, $dark-cheddar);
+	}
+	&.lollipop{
+		@include pushit-color($lollipop, $dark-lollipop);
+	}
+	&.apple{
+		@include pushit-color($apple, $dark-apple);
+	}
+}
+
+/* Switches */
+.switch{
+	width:64px;
+	height:32px;
+	background: transparent;
+	position:relative;
+
+
+	input{
+		display:none;
+	}
+
+	input:checked ~ label{
+		left: 32px;
+	}
+
+	input:checked ~ div{
+		background: $leaf;
+	}
+
+	div{
+		@include border-radius(64px);
+		@include transition(all, 0.2s, $bezier);
+		background: $dark-silver;
+		width:100%;
+		height:32px;
+		position:absolute;
+		top:0px;
+		left:0px;
+	}
+
+	label{
+		@include transition(all, 0.2s, $bezier);
+		@include border-radius(64px);
+
+		width:28px;
+		height:28px;
+		top:2px;
+		background: $silver;
+		box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+		cursor:pointer;
+		position:absolute;
+		left: 4px;
+		z-index:10;
+	}
+}
+
+.switch.flip{
+	width:64px;
+	height:32px;
+	background: transparent;
+	position:relative;
+
+
+	input{
+		display:none;
+	}
+
+	input:checked ~ .on{
+		background: $leaf;
+	}
+
+	input:checked ~ .off{
+		background: transparent;
+	}
+
+	input:checked ~ div{
+		border-color: $leaf;
+		background:transparent;
+	}
+
+	div{
+		@include border-radius(4px);
+		@include transition(all, 0.2s, $bezier);
+		background: transparent;
+		border: solid 2px $dark-silver;
+		width:100%;
+		height:32px;
+		position:absolute;
+		top:0px;
+		left:0px;
+	}
+
+	.on{
+		@include transition(all, 0.2s, $bezier);
+		@include border-radius(0px);
+		box-shadow:none;
+		width:28px;
+		height:28px;
+		top:2px;
+		background: transparent;
+		cursor:pointer;
+		position:absolute;
+		left: 34px;
+		z-index:10;
+	}
+
+	.off{
+		@include transition(all, 0.2s, $bezier);
+		@include border-radius(0px);
+		box-shadow:none;
+		width:28px;
+		height:28px;
+		top:2px;
+		background: $dark-silver;
+		cursor:pointer;
+		position:absolute;
+		left: 2px;
+		z-index:10;
+	}
+}
+/* Radio btn */
+.radio{
+	position:relative;
+	input{
+		display:none;
+	}
+
+	input:checked ~ label svg g circle.radio-inner{
+		fill: $leaf;
+	}
+	input:checked ~ label svg g circle.radio-outer{
+		stroke: $leaf;
+	}
+
+	label svg{
+		cursor:pointer;
+	}
+
+	label svg g circle.radio-inner{
+		@include transition(fill, 0.2s, $bezier);
+		fill: $dark-silver;
+	}
+	label svg g circle.radio-outer{
+		@include transition(stroke, 0.2s, $bezier);
+		stroke: $dark-silver;
+	}
+	.radio-label{
+		font-family:'lato';
+		color: $cardigan;
+		font-size:12px;
+		position:absolute;
+		top:8px;
+	}
+}
+
+/* checkbox */
+.checkbox{
+	min-width:32px;
+	height:32px;
+	position:relative;
+	@include transition(all, 0.3s, $bezier);
+
+	input{
+		display:none;
+	}
+
+	label svg path.checkbox-path-bg{
+		cursor:pointer;
+		@include transition(all, 0.2s, $bezier);
+		fill: $silver;
+	}
+
+	label svg path.checkbox-path-checkmark{
+		cursor:pointer;
+		@include transition(all, 0.2s, $bezier);
+		fill: $silver;
+	}
+
+	input:checked ~ label svg path.checkbox-path-bg{
+		fill: $leaf;
+	}
+
+	input:checked ~ label svg path.checkbox-path-checkmark{
+		fill: #fff;
+	}
+	label.check-label{
+		font-family:'lato';
+		color: $cardigan;
+		font-size:12px;
+		position:absolute;
+		top:8px;
+		left:34px;
+	}
+}
+
+.icon{
+	width:16px!important;
+	height:16px!important;
+}
+
+.icon-s{
+	width:8px!important;
+	height:8px!important;	
+}
+
+.icon-m{
+	width:24px!important;
+	height:24px!important;
+}
+
+.icon-l{
+	width:32px!important;
+	height:32px!important;
+}
+
+.icon-xl{
+	width:64px!important;
+	height:64px!important;
+}
+
+
+/* inputs */
+.input-font{
+	font-family:'Lato';
+	font-weight:300;
+	-webkit-font-smoothing: antialiased;
+	font-size:14px;	
+	outline:none;
+}
+
+input{
+	@extend .input-font;
+	height:48px;
+	background:#fff;
+	border: solid 1px $light-silver;
+	line-height:48px;
+	padding-left:4px;
+	padding-right:4px;
+	display:inline-block;
+	float:left;
+
+	&:enabled{
+		color: $light-cardigan;
+	}	
+
+	&:focus{
+		border: solid 1px $aquarium;
+		color: $light-cardigan;
+	}
+
+	&:disabled{
+		border: solid 1px $light-silver;
+		background: $light-silver;
+	}
+
+	&.small{
+		height:24px;
+		line-height:24px;
+	}
+
+	&.medium{
+		height:32px;
+		padding-top:2px;
+	}
+}
+
+::-webkit-input-placeholder {
+   	@extend .input-font;
+   	color: $dark-silver;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+ 	@extend .input-font;
+   	color: $light-cardigan;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   	@extend .input-font;
+   	color: $light-cardigan;
+}
+
+:-ms-input-placeholder {  
+	@extend .input-font;
+   	color: $light-cardigan;
+}

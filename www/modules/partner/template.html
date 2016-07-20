@@ -1,0 +1,79 @@
+<div ng-controller="partnerController" id="partner">
+    <ui-dialog></ui-dialog>
+    <div class="header">
+        <div class="actions">
+            <!-- <i ng-repeat="action in actions" class="{{action.icon}} md-icon-button actionIcon" md-button tooltips tooltip-title="{{action.title}}" tooltip-try="0" ng-click="action.execute()"></i> -->
+
+            <i ng-repeat="action in actions" class="{{action.icon}} md-icon-button actionIcon" md-button tooltips tooltip-title="{{action.title}}" tooltip-try="0" ng-click="action.execute()" ng-hide="action.title == 'Inhabilitar' && (partner.status != 2)"></i>
+            <i class="ion-checkmark-circled md-icon-button actionIcon" md-button tooltips tooltip-title="Habilitar" tooltip-try="0" ng-click="partnerActions.enable()" ng-show="partner.status == 3"></i>
+
+        </div>
+        <div class="infoContainer">
+            <div class="name">{{partner.name}}</div>
+            <div class="detail" layout="row">
+                <div flex class="info"><i class="ion-at"></i>{{partner.email}}</div>
+                <div flex class="info">
+                    <i class="ion-man"></i>Perfil <span ng-show="gotProfile = true;">{{profile}}</span>
+                </div>
+                <div flex class="info"></div>
+                <div flex class="info"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tabContainer" layout="column">
+            <div class="tabBar" layout="row">
+                <div class="tab" md-button flex ng-click="changeTab(1)" ng-class="{selected:tabSelected == 1}">Partners</div>
+                <div class="tab" md-button flex ng-click="changeTab(2)" ng-class="{selected:tabSelected == 2}">Agentes</div>
+                <div class="tab" md-button flex ng-click="changeTab(3)" ng-class="{selected:tabSelected == 3}">Historial de pago</div>
+                <div flex></div>
+                <div flex></div>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 1" layout="column">
+                <span style="font-weight:700;font-size:18px;">Partners registrados.</span>
+                <div class="placeholder" ng-show="partners.length < 1">
+                    <img src="img/placeholders/partners.png" class="img" />
+                    <div>ESTE PARTNER AÚN NO HA REGISTRADO PARTNERS</div>
+                </div>
+                <table class="tableContainer" ng-show="partners.length > 0">
+                    <thead>
+                        <th ng-repeat="header in tableHeaders" render="header.title"></th>
+                    </thead>
+                    <tbody ng-repeat="partner in partners">
+                        <tr ng-class-even="'even'">
+                            <td>{{partner.name}}</td>
+                            <td>{{partner.email}}</td>
+                            <td>{{partner.password}}</td>
+                            <td>{{partner.profile}}</td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 2" layout="column">
+                <span style="font-weight:700;font-size:18px;">Agentes registrados.</span>
+                <div class="placeholder" ng-show="agents.length < 1">
+                    <img src="img/placeholders/agents.png" class="img" />
+                    <div>ESTE PARTNER AÚN NO HA REGISTRADO AGENTES</div>
+                </div>
+                <table class="tableContainer" ng-show="agents.length > 0">
+                    <thead>
+                        <th ng-repeat="header in tableHeaders" render="header.title"></th>
+                    </thead>
+                    <tbody ng-repeat="agent in agents">
+                        <tr ng-class-even="'even'">
+                            <td>{{agent.name}}</td>
+                            <td>{{agent.email}}</td>
+                            <td>{{agent.password}}</td>
+                            <td>{{agent.profile}}</td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 3">
+                <payments></payments>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,221 @@
+<div ng-controller="customerController" id="customer">
+    <ui-dialog></ui-dialog>
+    <div class="header">
+        <div class="actions">
+            <i ng-repeat="action in actions" class="{{action.icon}} md-icon-button actionIcon" md-button tooltips tooltip-title="{{action.title}}" tooltip-try="0" ng-click="action.execute()" ng-hide="action.title == 'Inhabilitar' && (customer.status != 2)"></i>
+            <i class="ion-checkmark-circled md-icon-button actionIcon" md-button tooltips tooltip-title="Habilitar" tooltip-try="0" ng-click="customerActions.enable()" ng-show="customer.status == 3"></i>
+        </div>
+        <div class="infoContainer">
+            <div class="name">{{customer.name}}</div>
+            <div class="detail" layout="row">
+                <div flex class="info"><i class="ion-at"></i>{{customer.email}}</div>
+                <div flex class="info"><i class="ion-android-phone-portrait"></i>{{customer.phone}}</div>
+                <div flex class="info"><i class="ion-earth"></i>{{customer.country}}</div>
+                <div flex class="info"><i class="ion-calendar"></i>{{(customer.created * 1000) | date :'short'}}</div>
+            </div>
+            <div class="detail" layout="row">
+                <div flex class="info">
+                    <i class="ion-card"></i>Fecha de pago <span>{{customer.deadline}}</span>
+                </div>
+                <div flex class="info">
+                    <i class="ion-android-calendar"></i>Plazo cumplido <span>{{customer.cycle}}/{{customer.term}} meses.</span>
+                </div>
+                <!-- <div flex class="info"> -->
+                <!-- <i class="ion-man"></i>Perfil <span ng-show="typeof profile == 'string'">{{profile}}</span> -->
+                <!-- </div> -->
+                <div flex class="info"></div>
+                <div flex class="info"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tabContainer" layout="column">
+
+            <div class="tabBar" layout="row">
+                <div class="tab" md-button flex ng-click="changeTab(1)" ng-class="{selected:tabSelected == 1}">Productos</div>
+                <div class="tab" md-button flex ng-click="changeTab(2)" ng-class="{selected:tabSelected == 2}" ng-show="products[0].licenses > 0 || products[2].licenses > 0 || products[3].licenses > 0 || products[4].licenses > 0 || products[5].licenses > 0 || products[1].licenses > 0">Usuarios</div>
+                <div class="tab" md-button flex ng-click="changeTab(3)" ng-class="{selected:tabSelected == 3}" ng-show="$root.profile.customers.payments">Historial de pago</div>
+                <div flex></div>
+                <div flex></div>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 1" layout="column">
+                <span>Seleccione las aplicaciones e indique el número de licencias requeridas por el cliente.</span>
+                <div layout="row" class="productsContainer" ng-repeat="product in $root.products" ng-hide="(!$root.profile.products._1 && product.id == 1) || (!$root.profile.products._2 && product.id == 2) || (!$root.profile.products._3 && product.id == 3) || (!$root.profile.products._4 && product.id == 4) || (!$root.profile.products._8 && product.id == 8) || (!$root.profile.products._9 && product.id == 9) || product.id == 10">
+                    <div flex class="name">
+                        <img ng-src="{{product.icon}}" />Pentcloud {{product.name}}</div>
+                    <div flex class="price" ng-if="$root.partnerPricing && $root.partnerPricing.currency">{{$root.partnerPricing.currency}}{{$root.partnerPricing.prices[$index] | number:2 }} por usuario mensual</div>
+                    <div flex class="price" ng-if="!$root.partnerPricing">${{product.price}} por usuario mensual</div>
+                    <div flex class="licenses">
+                        <span class="block left">Licencias</span>
+                        <input class="block left" type="number" placeholder="" ng-model="product.licenses" />
+                    </div>
+                    <div flex class="subtotal" ng-if="!$root.partnerPricing">Subtotal{{product.price*product.licenses | number:2}}</div>
+                    <div flex class="subtotal" ng-if="$root.partnerPricing">Subtotal {{$root.partnerPricing.currency}}{{$root.partnerPricing.prices[$index]*product.licenses | number:2}}</div>
+                </div>
+                <div class="total" ng-if="!$root.partnerPricing">Total {{total | currency}}</div>
+                <div class="total" ng-if="$root.partnerPricing && $root.partnerPricing.currency">Total {{$root.partnerPricing.currency}}{{total | number:2}}</div>
+                <md-button class="confirm" ng-click="customerActions.activation();" ng-disabled="total == 0">Confirmar</md-button>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 2" layout="column">
+                <div class="subTabBar" layout="row">
+                    <div flex class="subTab" md-button ng-class="{selected:subTab == 1}" ng-click="changeSubTab(1)" ng-show="products[0].licenses > 0 || products[2].licenses > 0 || products[3].licenses > 0 || products[4].licenses > 0 || products[5].licenses > 0">Pentcloud Core</div>
+                    <div flex class="subTab" md-button ng-class="{selected:subTab == 2}" ng-click="changeSubTab(2)" ng-show="products[1].licenses > 0">Pentcloud Device</div>
+                    <div flex></div>
+                    <div flex></div>
+                    <div flex></div>
+                    <div flex></div>
+                </div>
+                <div ng-show="subTab == 1">
+                    <span>Invita usuarios e indica las aplicaciones que se le habilitarán.</span>
+                    <div class="formContainer" layout="row">
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-people"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Nombre" id="newUserFname" ng-model="newUser.form.fields.fname" ng-enter="focusLname()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-people"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Apellido" id="newUserLname" ng-model="newUser.form.fields.lname" ng-enter="focusEmail()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-at"></i>
+                            </div>
+                            <input type="email" class="input" placeholder="Correo electrónico" id="newUserEmail" ng-model="newUser.form.fields.email" ng-enter="focusArea()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-flag"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Área" id="newUserArea" ng-model="newUser.form.fields.phone.code" ng-enter="focusPhone()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-android-phone-portrait"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Teléfono" id="newUserPhone" ng-model="newUser.form.fields.phone.number" ng-enter="executeCreateUser()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <md-button class="add" ng-click="newUser.create()">Agregar usuario</md-button>
+                        </div>
+                    </div>
+                    <input type="text" class="search" placeholder="Buscar..." ng-model="coreUsersSearch"/>
+                    <table class="tableContainer">
+                        <thead>
+                            <th ng-repeat="header in tableHeaders" render="header.title"></th>
+                        </thead>
+                        <tbody ng-repeat="user in users | filter:coreUsersSearch">
+                            <tr ng-class-even="'even'">
+                                <td>{{user.fname}} {{user.lname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{'+' + $root.JSON.parse(user.phone)[0].code + ' ' + $root.JSON.parse(user.phone)[0].number}}</td>
+                                <td ng-if="!(user.pass==404 || user.pass == '' || user.pass == null)">{{user.pass}}</td>
+                                <td ng-if="user.pass==404 || user.pass == '' || user.pass == null" tooltips tooltip-title="Este password fue creado en versiones anteriores del sistema.">Password oculto</td>
+                                <td ng-show="products[0].licenses > 0">
+                                    <md-checkbox class="md-primary" ng-model="user.core" aria-label="Core"></md-checkbox>
+                                </td>
+                                <td ng-show="products[2].licenses > 0">
+                                    <md-checkbox class="md-primary" ng-model="user.crm" aria-label="CRM"></md-checkbox>
+                                </td>
+                                <td ng-show="products[3].licenses > 0">
+                                    <md-checkbox class="md-primary" ng-model="user.helpdesk" aria-label="HelpDesk"></md-checkbox>
+                                </td>
+                                <td ng-show="products[4].licenses > 0">
+                                    <md-checkbox class="md-primary" ng-model="user.learning" aria-label="Learning"></md-checkbox>
+                                </td>
+                                <td ng-show="products[5].licenses > 0">
+                                    <md-checkbox class="md-primary" ng-model="user.project" aria-label="Project"></md-checkbox>
+                                </td>
+                                <td>
+                                    <i ng-repeat="action in actionsUser" class="{{action.icon}} md-icon-button actionIcon" md-button title="{{action.title}}" ng-click="action.execute(user)"></i>
+                                </td>
+                                <!--<td>{{customer.deadline | date : 'MMM'}}.{{customer.deadline | date : 'dd'}} <i class="ion-record" tooltips tooltip-side="left" tooltip-title="Ok"></i></td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <md-button class="confirm" ng-click="coreUsersConfig()">Confirmar</md-button>
+                    <div class="clearBoth"></div>
+                </div>
+                <div ng-show="subTab == 2">
+                    <span>Invita usuarios para usar Pentcloud Device.</span>
+                    <div class="formContainer" layout="row">
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-people"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Nombre" id="newUserDeviceFname" ng-model="newUserDevice.form.fields.fname" ng-enter="focusDeviceLname()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-people"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Apellido" id="newUserDeviceLname" ng-model="newUserDevice.form.fields.lname" ng-enter="focusDeviceEmail()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-at"></i>
+                            </div>
+                            <input type="email" class="input" placeholder="Correo electrónico" id="newUserDeviceEmail" ng-model="newUserDevice.form.fields.email" ng-enter="focusDeviceArea()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-ios-flag"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Área" id="newUserDeviceArea" ng-model="newUserDevice.form.fields.phone.code" ng-enter="focusDevicePhone()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <div class="inputIcon block left">
+                                <i class="ion-android-phone-portrait"></i>
+                            </div>
+                            <input type="text" class="input" placeholder="Teléfono" id="newUserDevicePhone" ng-model="newUserDevice.form.fields.phone.number" ng-enter="executeCreateUserDevice()"/>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div flex class="inputContainer">
+                            <md-button class="add" ng-click="newUserDevice.create()">Agregar usuario</md-button>
+                        </div>
+                    </div>
+                    <input type="text" class="search" placeholder="Buscar..." ng-model="deviceUsersSearch"/>
+                    <table class="tableContainer">
+                        <thead>
+                            <th ng-repeat="header in tableHeadersDevice" render="header.title"></th>
+                        </thead>
+                        <tbody ng-repeat="user in usersDevice | filter:deviceUsersSearch">
+                            <tr ng-class-even="'even'">
+                                <td>{{user.fname}} {{user.lname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{'+' + $root.JSON.parse(user.phone)[0].code + ' ' + $root.JSON.parse(user.phone)[0].number}}</td>
+                                <td ng-if="!(user.pass==404 || user.pass == '' || user.pass == null)">{{user.pass}}</td>
+                                <td ng-if="user.pass==404 || user.pass == '' || user.pass == null" tooltips tooltip-title="Este password fue creado en versiones anteriores del sistema.">Password oculto</td>
+<!--
+                                <td>
+                                    <md-checkbox class="md-primary" ng-model="user.device" aria-label="Checkbox 1"></md-checkbox>
+                                </td>
+-->
+                                <td>
+                                    <i ng-repeat="action in actionsUserDevice" class="{{action.icon}} md-icon-button actionIcon" md-button title="{{action.title}}" ng-click="action.execute(user)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <md-button class="confirm">Confirmar</md-button> -->
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+            <div class="tabContent" ng-show="tabSelected == 3">
+                <payments></payments>
+            </div>
+        </div>
+    </div>
+</div>

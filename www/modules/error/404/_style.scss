@@ -1,0 +1,61 @@
+#draw{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-color:#F8F9F9!important;
+	padding-top:64px;
+	.form{
+		background-color:$main;
+		padding:0px 2.5%;
+	}
+	.md-bw-theme{
+		label{
+			color:#fff;
+		}
+		input.md-input{
+			border-color:#fff;
+		}
+	}
+	.body{
+		width:95%;
+		margin:2.5% 2.5%;
+	}
+	.md-whiteframe-z1{
+		padding:48px 10px 2px 10px;
+		color:$main;
+		line-height: 72px;
+	}
+	.drawHeader	{
+		line-height: 48px;
+		color: #fff;
+		height: 48px;
+		width:100%;
+		background-color: $main;
+		padding:0px 8px;
+		position:absolute;
+		top:0px;
+		left:0px;
+	}
+}
+#stepDialog{
+	.nodeHeader{
+		width:100%;
+		background:$main;
+		height:32px;
+		margin-top:4px;
+		color:#fff;
+		padding:0px 2%;
+		line-height:32px;
+		i{
+			margin:0px 8px;
+			padding:0px 4px;
+			width:32px;
+			cursor:pointer;
+			&:hover{
+				background:#C61F3B;
+			}
+		}
+	}
+}

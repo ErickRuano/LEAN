@@ -1,0 +1,36 @@
+<div ng-controller="ticketsController" id="tickets">
+    <ui-dialog></ui-dialog>
+    <div class="mainCreate" md-button ng-click="newTicket.form.create()"><i class="ion-plus"></i></div>
+    <div class="placeholder" ng-show="tickets.length == 0">
+        <img src="img/placeholders/records.png" class="img" />
+        <div>NO TIENES TICKETS
+            <br>
+            <br><span class="message">Agrega un ticket.</span>
+        </div>
+        <br>
+        <br>
+        <md-button class="add" ng-click="newTicket.form.create()">CREA UN TICKET DE SOPORTE</md-button>
+    </div>
+    <div class="dataContainer" ng-show="tickets.length > 0">
+        <input type="text" class="search block left" placeholder="Buscar..." ng-model="filterQuery"/>
+        <!-- <div class="filterContainer block left">
+            <span ng-repeat="letter in alphabet" class="md-icon-button letter" md-button flex hide-sm ng-click="filterLetter(letter)" ng-class="{ active : letter == filterInitial }">{{letter.toUpperCase()}}</span>
+        </div> -->
+        <table class="tableContainer">
+            <thead>
+                <th ng-repeat="header in tableHeaders">{{header.title}}</th>
+            </thead>
+            <tbody ng-repeat="ticket in tickets | filter:filterQuery">
+                <tr ng-class-even="'even'" ng-click="goTicket(ticket)">
+                    <td>{{ticket.id}}</td>
+                    <td>{{ticket.categoria}}</td>
+                    <td>{{ticket.asunto}}</td>
+                    <td>{{ticket.creacion}}</td>
+                    <td>{{ticket.estatus}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="warning" ng-show="filteredTickets.length == 0" >No se encontraron resultados con inicial "{{filterInitial}}"</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div ng-controller="agentController" id="agent">
+    <ui-dialog></ui-dialog>
+    <div class="header">
+        <div class="actions">
+
+            <!-- <i ng-repeat="action in actions" class="{{action.icon}} md-icon-button actionIcon" md-button tooltips tooltip-title="{{action.title}}" tooltip-try="0" ng-click="action.execute()"></i> -->
+            <i ng-repeat="action in actions" class="{{action.icon}} md-icon-button actionIcon" md-button tooltips tooltip-title="{{action.title}}" tooltip-try="0" ng-click="action.execute()" ng-hide="action.title == 'Inhabilitar' && (agent.status != 2)"></i>
+            <i class="ion-checkmark-circled md-icon-button actionIcon" md-button tooltips tooltip-title="Habilitar" tooltip-try="0" ng-click="agentActions.enable()" ng-show="agent.status == 3"></i>
+
+        </div>
+        <div class="infoContainer">
+            <div class="name">{{agent.name}}</div>
+            <div class="detail" layout="row">
+                <div flex="20" class="info"><i class="ion-at"></i>{{agent.email}}</div>
+                <div flex="20" class="info">
+                    <i class="ion-man"></i>Perfil <span ng-show="gotProfile">{{profile}}</span>
+                </div>
+                <div flex class="info">
+                    <i class="ion-calendar"></i>Fecha de creación <span>{{agent.created | date: 'short'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="placeholder" ng-show="customers.length < 1">
+        <img src="img/placeholders/customers.png" class="img" />
+        <div>ESTE AGENTE AÚN NO HA REGISTRADO CLIENTES</div>
+    </div>
+    <div class="content" ng-show="customers.length > 0">
+        <div class="tabContainer" layout="column">
+            <div class="tabContent">
+                <span style="font-weight:700;font-size:18px;">Clientes registrados.</span>
+                <table class="tableContainer">
+                    <thead>
+                        <th ng-repeat="header in tableHeaders" render="header.title"></th>
+                    </thead>
+                    <tbody ng-repeat="customer in customers">
+                        <tr ng-class-even="'even'">
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.country}}</td>
+                            <td>{{customer.email}}</td>
+                            <td>{{customer.phone}}</td>
+                            <td>{{customer.term}}</td>
+                            <td>{{customer.deadline  | date : 'dd'}}</td>
+<!--                            <td>{{customer.deadline  | date : 'MMM'}}.{{customer.deadline  | date : 'dd'}} <i class="ion-record" tooltips tooltip-side="left" tooltip-title="Ok"></i></td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

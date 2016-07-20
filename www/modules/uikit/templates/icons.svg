@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+	<symbol id="i-chat-stroke" viewBox="0 0 32 32">
+	</symbol>
+	
+	<symbol id="i-bell-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-star-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-dropdown" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-comment" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-share" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-attach" viewBox="0 0 32 32">		
+	</symbol>
+
+	<symbol id="i-check" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-check-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-edit" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-edit-stroke" viewBox="0 0 32 32">
+	</symbol>
+	
+	<symbol id="i-folder" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-folder-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-heart" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-heart-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-plus" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-plus-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-print" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-print-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-tag" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-tag-stroke" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<symbol id="i-conf" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<symbol id="i-conf-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-repeat" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-repeat-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-question-stroke" viewBox="0 0 32 32">
+				
+	</symbol>
+
+	<symbol id="i-question" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<symbol id="i-dollar-stroke" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-dollar" viewBox="0 0 32 32">
+	</symbol>
+
+
+	<symbol id="i-signal-stroke" viewBox="0 0 32 32">
+
+	</symbol>
+
+	<symbol id="i-signal" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<symbol id="i-on-stroke" viewBox="0 0 32 32">
+		
+	</symbol>
+	<symbol id="i-on" viewBox="0 0 32 32">
+	</symbol>
+	
+	<symbol id="i-img" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<symbol id="i-img-stroke" viewBox="0 0 32 32">
+		
+	</symbol>
+
+	<!-- <symbol id="i-device-img" viewBox="0 0 32 32">
+			<path d="M30.062,28.063H2V3.375h28.062V28.063z M3.081,26.981H28.98V4.456H3.081V26.981z M25.003,23.003H7.059
+			v-4.062l5.529-9.217l7.101,8.64l5.314-3.676V23.003z M8.14,21.922h15.782v-5.173l-4.437,3.069l-6.759-8.224L8.14,19.241V21.922z
+			 M21.931,14.572c-1.691,0-3.068-1.376-3.068-3.067c0-1.693,1.377-3.071,3.068-3.071c1.694,0,3.072,1.378,3.072,3.071
+			C25.003,13.196,23.625,14.572,21.931,14.572z M21.931,9.515c-1.095,0-1.987,0.893-1.987,1.99c0,1.095,0.893,1.987,1.987,1.987
+			c1.099,0,1.991-0.892,1.991-1.987C23.922,10.408,23.029,9.515,21.931,9.515z"/>
+	</symbol>
+
+	<symbol id="i-device-list" viewBox="0 0 32 32">
+			<path d="M15.926,23.235L2,6.875h27.854L15.926,23.235z M4.54,8.049l11.386,13.375L27.313,8.049H4.54z"/>
+	</symbol>
+
+	<symbol id="i-device-radio" viewBox="0 0 32 32">
+		<path d="M16,22.947c-3.555,0-6.447-2.893-6.447-6.447c0-3.555,2.892-6.447,6.447-6.447
+			c3.555,0,6.446,2.892,6.446,6.447C22.446,20.055,19.555,22.947,16,22.947z M16,11.053c-3.003,0-5.447,2.444-5.447,5.447
+			s2.444,5.447,5.447,5.447c3.003,0,5.446-2.443,5.446-5.447S19.003,11.053,16,11.053z"/>
+		<path d="M16,28.619c-6.683,0-12.12-5.438-12.12-12.12c0-6.683,5.437-12.12,12.12-12.12
+			c6.683,0,12.12,5.437,12.12,12.12C28.12,23.182,22.683,28.619,16,28.619z M16,5.379c-6.132,0-11.12,4.988-11.12,11.12
+			c0,6.131,4.988,11.12,11.12,11.12s11.12-4.988,11.12-11.12C27.12,10.368,22.132,5.379,16,5.379z"/>
+	</symbol>
+
+	<symbol id="i-device-check" viewBox="0 0 32 32">
+		<path d="M24.375,28.859H7.687c-2.676,0-4.854-2.177-4.854-4.852V7.994c0-2.676,2.177-4.854,4.854-4.854h16.688
+			c2.676,0,4.854,2.177,4.854,4.854v16.014C29.229,26.683,27.051,28.859,24.375,28.859z M7.687,4.141
+			c-2.125,0-3.854,1.729-3.854,3.854v16.014c0,2.124,1.729,3.852,3.854,3.852h16.688c2.125,0,3.854-1.728,3.854-3.852V7.994
+			c0-2.125-1.729-3.854-3.854-3.854H7.687z"/>
+		<polygon  points="14.876,21.622 9.989,16.339 10.724,15.661 14.854,20.126 22.331,11.545 23.085,12.203 		"/>
+	</symbol>
+
+	<symbol id="i-device-textarea" viewBox="0 0 32 32">
+			<path  d="M29.803,25.459H2.197V5.792h27.606V25.459z M3.197,24.459h25.606V6.792H3.197V24.459z"/>
+			<rect x="5.717" y="10.09"  width="1" height="8.285"/>
+			<rect x="4.924" y="9.438"  width="2.583" height="1"/>
+			<rect x="4.954" y="17.875"  width="2.586" height="1"/>
+	</symbol>
+	
+	<symbol id="i-device-text" viewBox="0 0 32 32">
+			<polygon  points="9.237,11.356 9.237,12.774 3.672,12.774 3.672,20.577 9.237,20.577 9.237,21.991 2.258,21.991 
+			2.258,11.356 		"/>
+			<polygon  points="14.681,20.577 28.448,20.577 28.448,12.774 14.681,12.774 14.681,11.356 29.864,11.356 
+			29.864,21.991 14.681,21.991 		"/>
+			<rect x="11.46" y="7"  width="1" height="18.333"/>
+			<rect x="9.237" y="6.167"  width="5.445" height="1"/>
+			<rect x="9.303" y="24.833"  width="5.445" height="1"/>
+	</symbol> -->
+
+	<symbol id="i-date" viewBox="0 0 32 32">
+	</symbol>
+	<symbol id="i-bin" viewBox="0 0 32 32">
+	</symbol>
+	<symbol id="i-calendar" viewBox="0 0 32 32">
+	</symbol>
+
+	<symbol id="i-user">
+	</symbol>
+
+	
+	<symbol id="i-order">
+			
+	</symbol>
+	<symbol id="i-quit">
+		
+	</symbol>
+
+
+
+	
+</svg>

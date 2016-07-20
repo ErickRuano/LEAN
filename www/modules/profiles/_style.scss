@@ -1,0 +1,80 @@
+md-select-label{
+                    width:100%!important;
+                }
+#profiles {
+    .content {
+        padding: 5px;
+        .tabContainer {
+            background: white;
+            .tabBar {
+                text-align: center;
+                background: #edecec;
+                .tab {
+                    @include transition(all, 0.2s, $bezier);
+                    @include borderRadius(0px);
+                    line-height: normal;
+                    min-height: inherit;
+                    padding: 20px 0;
+                    color: $mainFont;
+                    font-size: 18px;
+                    font-weight: 700;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    margin: 0;
+                    &.selected {
+                        background: white !important;
+                    }
+                    &:hover {
+                        background: #ccc;
+                    }
+                }
+            }
+        }
+        .tabContent {
+            background: white;
+            padding: 16px 32px;
+            .tabHeader{
+                md-select-label{
+                    width:100%!important;
+                }
+            }
+        }
+    }
+    .add {
+        @include borderRadius(10px);
+        background: #5bc4c3;
+        color: white;
+        padding: 4px 8px;
+        position:relative;
+        top:4px;
+        float:right;
+        display:inline-block;
+    }
+        .section{
+            h1{
+                font-size:18px;
+                color: $mainFont;               
+                font-weight: 700;
+            }
+            h2{
+                font-size:14px;
+                color: $mainFont;               
+            }
+            .sub{
+                @include transition(all, 0.4s, $bezier);
+                opacity:1;
+                margin-left:24px;
+                // color: $light-cardigan;
+                &.disabled{
+                    opacity: 0.4;
+                    pointer-events:none;
+                }
+            }
+        }
+    
+ .actionIcon{
+    position:relative;
+    top:10px;
+    font-size:16px;
+ }   
+}

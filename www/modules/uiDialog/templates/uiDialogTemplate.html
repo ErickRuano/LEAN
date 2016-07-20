@@ -1,0 +1,15 @@
+<div class="animate-me" ng-class="{ coreDialogVisible : $root.coreDialog,  coreDialogHidden: !$root.coreDialog }">
+	<div class="coreDialogTheater"  ng-click="$root.coreDialogMethods.destroy()" ng-style="{ backgroundColor : $root.coreDialog.alternate }" ng-if="$root.coreDialog.alternate != undefined"></div>
+	<div class="coreDialogTheater" ng-click="$root.coreDialogMethods.destroy()"  ng-if="$root.coreDialog.alternate == undefined"></div>
+
+	<!-- <div class="coreDialogContainer"  style="display:block;"  ng-class="{ beforeShown : !$root.coreDialog, afterShown : $root.coreDialog}"  id="uiDialogTemplate"> -->
+	<div class="coreDialogContainer"  style="display:block;"  ng-class="{ destroy : $root.coreDialog.destroy }"  id="uiDialogTemplate">
+		<div class="coreDialogHeader" render="$root.coreDialog.title" ng-if="$root.coreDialog.title.length > 0"></div>
+		<div class="coreDialogBody" render="$root.coreDialog.body" style="width:100%;"></div>
+		<br>
+		<div class="coreDialogTools" style="width:100%;" layout="row">
+				<!-- <span ng-repeat="button in $root.coreDialog.buttons" render="$root.coreDialog.buttons[$index].render"></span> -->
+				<md-button ng-repeat="button in $root.coreDialog.buttons" flex ng-click="button.action" dialog-click="{{button.action}}">{{button.text}}</md-button>
+		</div>
+	</div>
+</div>

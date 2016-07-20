@@ -1,0 +1,235 @@
+.paymentContainer {
+    width: 100%;
+    .paymentHeader {
+        font-size: 20px;
+        color: #213b4a;
+        i {
+            color: #010101;
+            margin-right: 10px;
+        }
+    }
+    .paymentTabBar {
+        margin-top: 30px;
+        border-bottom: 3px solid #f1f1f2;
+        .tab {
+            @include transition(all, 0.2s, $bezier);
+            @include borderRadius(0px);
+            color: #231f20;
+            background: white;
+            border-bottom: 4px solid transparent;
+            cursor: pointer;
+            line-height: normal;
+            min-height: inherit;
+            padding: 10px;
+            font-size: 16px;
+            margin: 0;
+            text-transform: capitalize;
+            text-align: left;
+            &.selected {
+                border-bottom: 4px solid #5bc4c3 !important;
+                font-weight: 700;
+            }
+            &:hover {
+                border-bottom: 4px solid #cbecec;
+            }
+        }
+    }
+    .paymentContent {
+        color: #213b4a;
+        margin-top: 20px;
+        .title {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .description {
+            margin-top: 10px;
+        }
+        .inputContainerFull {
+            margin-top: 20px;
+            .inputIcon {
+                width: 40px;
+                height: 40px;
+                background: #213b4a;
+                color: white;
+                font-size: 20px;
+                padding: 8px 0 0 11px;
+            }
+            .input {
+                height: 40px;
+                outline: none;
+                color: #808284;
+                width: 100%;
+                width: -moz-calc(100% - 40px);
+                width: calc(100% - 40px);
+                background: #f8f9f9;
+                font-size: 12px;
+            }
+        }
+        .formLabel {
+            margin-top: 40px;
+            font-weight: 700;
+            .categoryIcons {
+                margin-top: 20px;
+                .categoryIcon {
+                    @include borderRadius(0px);
+                    font-size: 20px;
+                    margin: 0 10px;
+                    color: #213b4a;
+                    background: transparent;
+                    &.selected {
+                        background: #213b4a;
+                        color: white;
+                    }
+                }
+            }
+            .label {
+                margin-right: 10px;
+            }
+        }
+        .formInput {
+            margin-top: 20px;
+            font-weight: 400;
+            .inputContainer {
+                margin-right: 10px;
+                .inputIcon {
+                    width: 40px;
+                    height: 40px;
+                    background: #213b4a;
+                    color: white;
+                    font-size: 20px;
+                    padding: 8px 0 0 11px;
+                    &.plus {
+                        background: #b5d333;
+                    }
+                    &.minus {
+                        background: white;
+                        color: #ed1c24;
+                        border: 1px solid #ed1c24;
+                    }
+                }
+                .input {
+                    height: 40px;
+                    outline: none;
+                    color: #808284;
+                    width: 80%;
+                    width: -moz-calc(100% - 40px);
+                    width: calc(100% - 40px);
+                    background: #f8f9f9;
+                    font-size: 12px;
+                }
+            }
+            .paymentType {
+                .paymentIcon {
+                    @include borderRadius(0px);
+                    font-size: 20px;
+                    margin: 0 10px;
+                    color: #213b4a;
+                    background: transparent;
+                    &.selected {
+                        background: #213b4a;
+                        color: white;
+                    }
+                }
+            }
+        }
+        .confirmPayment {
+            @include borderRadius(10px);
+            margin-top: 30px;
+            background: #8cc63e;
+            width: 50%;
+            margin-left: 25%;
+            color: white;
+            padding: 5px 0;
+        }
+    }
+    .paymentList {
+        margin-top: 20px;
+        .title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .search {
+            width: 100%;
+            padding: 10px;
+            padding-right: 32px;
+            outline: none;
+            border: 1px solid #e8e9e9;
+            background: #f8f9f9 url("../img/search_gray.png") no-repeat 100% 50%;
+            color: #a7a9ab;
+            margin-bottom: 20px;
+        }
+        .tableContainer {
+            width: 100%;
+            margin-top: 20px;
+            thead {
+                background: #6a6b6b;
+                color: white;
+                th {
+                    padding: 10px 0;
+                    font-size: 12px;
+                    font-weight: 400;
+                    text-align: center;
+                    .iconHeader {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+            tbody {
+                color: #020302;
+                tr {
+                    @include transition(all, 0.3s, $bezier);
+                    border: 1px solid #e8e9e9;
+                    cursor: pointer;
+                    &.even {
+                        border: 0 solid transparent !important;
+                        background: #eff7f8;
+                    }
+                    &:hover {
+                        background: #ddeef0;
+                    }
+                }
+                td {
+                    padding: 15px 0;
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: #231f20;
+                }
+            }
+        }
+    }
+}
+#newCategoryContainer {
+    .amountContainer {
+        .amount {
+            padding: 10px 12px;
+            text-align: center;
+            &.selectedLess {
+                border: 1px solid #ed1c24 !important;
+                color: #ffffff !important;
+                background: #ed1c24 !important;
+            }
+            &.selectedMore {
+                border: 1px solid #8cc63e !important;
+                color: #ffffff !important;
+                background: #b5d333 !important;
+                
+            }
+        }
+    }
+    .iconContainer {
+        .categoryIcon {
+            @include borderRadius(0px);
+            font-size: 20px;
+            margin: 0 10px;
+            color: #213b4a;
+            background: transparent;
+            &.selected {
+                background: #213b4a;
+                color: white;
+            }
+        }
+    }
+}

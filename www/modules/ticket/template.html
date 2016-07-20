@@ -1,0 +1,59 @@
+<div ng-controller="ticketController" id="ticket">
+    <ui-dialog></ui-dialog>
+    <div class="header">
+        <div class="infoContainer">
+            <div class="name">{{ticketDetail.titulo}}</div>
+            <div class="detail" layout="row">
+                <div flex="25" class="info"><i class="ion-at"></i>Tickect ID <span>{{inTicket.id}}</span>
+                </div>
+                <div flex="25" class="info">
+                    <i class="ion-man"></i>Categoría <span>{{ticketDetail.categoria}}</span>
+                </div>
+                <div flex="25" class="info">
+                    <i class="ion-man"></i>Estado <span>{{ticketDetail.estatus}}</span>
+                </div>
+                <div flex="25" class="info">
+                    <i class="ion-calendar"></i>Fecha de creación <span>{{ticketDetail.fecha}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    <div class="content" ng-show="customers.length > 0">-->
+    <div class="content">
+        <div class="commentsContainer" layout="column">
+            <md-card class="subjectContainer">
+                <span class="title">Descripción</span>
+                <md-divider></md-divider>
+                <md-card-content>
+                   {{ticketDetail.comentario}}
+                </md-card-content>
+            </md-card>
+            <md-card class="responsesContainer">
+                <md-card-content>
+                    <md-list layout="column" ng-repeat="post in ticketDetail.feed | orderBy:'fecha':true">
+                        <div>
+                            <md-subheader>{{post.fecha}}</md-subheader>
+                            <md-list-item class="md-2-line">
+                                <div class="md-list-item-text">
+                                    <h3 ng-if="!post.nombre">{{user.username}}</h3>
+                                    <h3 ng-if="post.nombre">{{post.nombre}}</h3>
+                                    <p>{{post.comentario}}</p>
+                                </div>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                        </div>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+            <md-card>
+                <md-card-content>
+                    <md-input-container flex>
+                        <label>Comentario</label>
+                        <textarea ng-model="comment" columns="1" md-maxlength="500"></textarea>
+                    </md-input-container>
+                    <md-button style="background:#8ecea7;color:white;" ng-click="createComment()">Comentar</md-button>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</div>

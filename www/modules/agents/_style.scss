@@ -1,0 +1,111 @@
+#agents {
+    padding: 10px;
+    .placeholder {
+        margin-top: 7.5%;
+        height: auto;
+        width: 30%;
+        margin-left: 35%;
+        text-align: center;
+        color: #231f20;
+        font-weight: 700;
+        .img {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-weight: initial;
+            font-size: 13px;
+        }
+        .add {
+            @include borderRadius(10px);
+            width: 60%;
+            background: #5bc4c3;
+            color: white;
+            padding: 5px 0;
+        }
+    }
+    .dataContainer {
+        width: 100%;
+        height: auto;
+        background: white;
+        padding: 10px;
+        .search {
+            width: 100%;
+            padding: 10px;
+            padding-right: 32px;
+            outline: none;
+            border: 1px solid #e8e9e9;
+            background: #f8f9f9 url("../img/search_gray.png") no-repeat 100% 50%;
+            color: #a7a9ab;
+        }
+        .filterContainer {
+            width: 100%;
+            padding: 0 10px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            .letter {
+                font-size: 10px;
+                width: 32px;
+                height: 32px;
+                line-height: normal;
+                margin: 0 4px;
+                font-weight: 700;
+                color: #231f20;
+                &.active{
+                    color:$dark-aquarium!important;
+                }
+            }
+        }
+        .tableContainer {
+            width: 100%;
+            thead {
+                background: #5bc4c3;
+                color: white;
+                th {
+                    padding: 10px 0;
+                    font-size: 12px;
+                    font-weight: 400;
+                    text-align: center;
+                }
+            }
+            tbody {
+                color: #020302;
+                tr {
+                    @include transition(all, 0.3s, $bezier);
+                    border: 1px solid #e8e9e9;
+                    cursor: pointer;
+                    &.even {
+                        border: 0 solid transparent !important;
+                        background: #eff7f8;
+                    }
+                    &:hover {
+                        background: #ddeef0;
+                    }
+                }
+                td {
+                    padding: 15px 0;
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: #231f20;
+                    i {
+                        font-size: 18px;
+                        margin-left: 20px;
+                        color: #8cc63e;
+                    }
+                }
+            }
+        }
+    }
+    .warning{
+                width: 80%;
+                margin-left: 10%;
+                text-align: center;
+                padding: 10px 0;
+                background: #f37845;
+                color: white;
+                font-size: 12px;
+                margin-top: 20px;
+            }
+}

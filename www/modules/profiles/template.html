@@ -1,0 +1,220 @@
+<div ng-controller="profilesController" id="profiles">
+    <ui-dialog></ui-dialog>
+    <div class="mainCreate" md-button ng-click="newProfile.form.create('partners')" ng-if="tabSelected == 1"><i class="ion-plus"></i></div>
+    <div class="mainCreate" md-button ng-click="newProfile.form.create('agents')"  ng-if="tabSelected == 2"><i class="ion-plus"></i></div>
+    <div class="content">
+        <div class="tabContainer">
+
+            <div class="tabBar" layout="row">
+                <div class="tab" md-button flex ng-click="changeTab(1)" ng-class="{selected:tabSelected == 1}">Partners</div>
+                <div class="tab" md-button flex ng-click="changeTab(2)" ng-class="{selected:tabSelected == 2}">Agentes</div>
+                <!-- <div class="tab" md-button flex ng-click="changeTab(3)" ng-class="{selected:tabSelected == 3}">Clientes</div> -->
+                <div flex></div>
+                <div flex></div>
+                <div flex></div>
+            </div>
+
+            <div class="tabContent" ng-show="tabSelected == 1" layout="row" layout-wrap layout-margin layout-padding>
+                
+            	<div class="tabHeader" layout-wrap  flex="100" layout="row">
+	            	<md-input-container flex="40">
+					  <md-select ng-model="profile" placeholder="Select a profile">
+					    <md-option ng-value="profile" ng-repeat="profile in profiles">{{ profile.name }}</md-option>
+					  </md-select>
+					</md-input-container>
+                    <div flex>
+                        <!-- <md-button class="add" ng-click="newProfile.form.create('partners')">Crear perfil</md-button> -->
+                        <i class="ion-trash-a md-icon-button actionIcon block right foreground cardigan" md-button tooltips tooltip-title="Eliminar" tooltip-try="0"></i>
+                        <i class="ion-upload md-icon-button actionIcon block right foreground cardigan" md-button tooltips tooltip-title="Guardar" tooltip-try="0" ng-click="newProfile.update()"></i>
+                    </div>
+			    </div>
+
+                <md-list class="section md-whiteframe-z1" flex ng-show="profile" >
+                    <h1>Productos</h1>
+                    <h2>Selecciona los productos que el partner puede distribuir</h2>
+                    <md-list-item>
+                        <p> Pentcloud Core </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._1"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud CRM </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._3"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Help Desk </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._4"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Learning </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._8"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Project </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._9"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Device </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._2"></md-switch>
+                    </md-list-item>
+                </md-list>
+
+                <md-list class="section md-whiteframe-z1" flex ng-show="profile">
+                    <h1>Módulos Backoffice</h1>
+                    <h2>Selecciona los módulos a los que el partner acceder.</h2>
+                    <md-list-item>
+                        <p> Módulo de gestión de Clientes </p>
+                        <md-switch class="md-primary" ng-model="profile.model.customers.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Asignar productos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.products"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Gestionar usuarios y licencias </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.users"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.payments"></md-switch>
+                        </md-list-item>
+                    <md-list-item>
+                        <p> Partners </p>
+                        <md-switch class="md-primary" ng-model="profile.model.partners.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.partners.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.partners.payments"></md-switch>
+                        </md-list-item>
+                    <md-list-item>
+                        <p> Módulo de gestión de Agentes </p>
+                        <md-switch class="md-primary" ng-model="profile.model.agents.module"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Módulo de gestión de Perfiles </p>
+                        <md-switch class="md-primary" ng-model="profile.model.profiles.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.partners"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.agents"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.customers"></md-switch>
+                        </md-list-item>
+                </md-list>
+
+
+
+                <md-content ng-show="!profile">
+                    PLACEHOLDER
+                <md-content>
+
+            </div>
+
+            <div class="tabContent" ng-show="tabSelected == 2" layout="row" layout-wrap layout-margin layout-padding>
+
+                <div class="tabHeader" layout-wrap  flex="100" layout="row">
+                    <md-input-container flex="40">
+                      <md-select ng-model="profile" placeholder="Select a profile">
+                        <md-option ng-value="profile" ng-repeat="profile in profiles">{{ profile.name }}</md-option>
+                      </md-select>
+                    </md-input-container>
+                    <div flex>
+                        <md-button class="add" ng-click="newProfile.form.create('partners')">Crear perfil</md-button>
+                        <i class="ion-trash-a md-icon-button actionIcon block right foreground cardigan" md-button tooltips tooltip-title="Eliminar" tooltip-try="0"></i>
+                        <i class="ion-upload md-icon-button actionIcon block right foreground cardigan" md-button tooltips tooltip-title="Guardar" tooltip-try="0" ng-click="newProfile.update()"></i>
+                    </div>
+                </div>
+
+                <md-list class="section md-whiteframe-z1" flex ng-show="profile" >
+                    <h1>Productos</h1>
+                    <h2>Selecciona los productos que el partner puede distribuir</h2>
+                    <md-list-item>
+                        <p> Pentcloud Core </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._1"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud CRM </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._3"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Help Desk </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._4"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Learning </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._8"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Project </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._9"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Pentcloud Device </p>
+                        <md-switch class="md-primary" ng-model="profile.model.products._2"></md-switch>
+                    </md-list-item>
+                </md-list>
+
+                <md-list class="section md-whiteframe-z1" flex ng-show="profile">
+                    <h1>Módulos Backoffice</h1>
+                    <h2>Selecciona los módulos a los que el partner acceder.</h2>
+                    <md-list-item>
+                        <p> Módulo de gestión de Clientes </p>
+                        <md-switch class="md-primary" ng-model="profile.model.customers.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Asignar productos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.products"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Gestionar usuarios y licencias </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.users"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.customers.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.customers.payments"></md-switch>
+                        </md-list-item>
+                    <md-list-item>
+                        <p> Partners </p>
+                        <md-switch class="md-primary" ng-model="profile.model.partners.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.partners.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.partners.payments"></md-switch>
+                        </md-list-item>
+                    <md-list-item>
+                        <p> Módulo de gestión de Agentes </p>
+                        <md-switch class="md-primary" ng-model="profile.model.agents.module"></md-switch>
+                    </md-list-item>
+                    <md-list-item>
+                        <p> Módulo de gestión de Perfiles </p>
+                        <md-switch class="md-primary" ng-model="profile.model.profiles.module"></md-switch>
+                    </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.partners"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.agents"></md-switch>
+                        </md-list-item>
+                        <md-list-item class="sub" ng-class="{ disabled : !profile.model.profiles.module }">
+                            <p> Visualizar y gestionar historial de pagos </p>
+                            <md-switch class="md-primary" ng-model="profile.model.profiles.customers"></md-switch>
+                        </md-list-item>
+                </md-list>
+
+
+
+                <md-content ng-show="!profile">
+                    PLACEHOLDER
+                <md-content>
+            </div>
+
+        </div>
+    </div>
+</div>

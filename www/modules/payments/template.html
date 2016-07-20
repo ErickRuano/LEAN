@@ -1,0 +1,82 @@
+<div class="paymentContainer" layout="column" ng-controller="paymentController">
+    
+    <div class="paymentHeader">
+        <i class="ion-calendar"></i>
+        <span>{{today | date:'longDate'}}</span>
+    </div>
+
+    <div class="paymentTabBar" layout="row">
+        <div flex class="tab" md-button ng-class="{selected:paymentTab == 1}" ng-click="paymentChangeTab(1)">Historial de Registros</div>
+        <div flex class="tab" md-button ng-class="{selected:paymentTab == 2}" ng-click="paymentChangeTab(2)">Registro Monetario</div>
+        <div flex></div>
+        <div flex></div>
+        <div flex></div>
+        <div flex></div>
+    </div>
+
+    <div class="paymentContent" layout="column" ng-show="paymentTab == 2">
+        <span class="title">Agrega un nuevo registro monetario</span>
+        <span class="description">Agrega los registros monetarios del cliente seleccionado para llevar un control más detallado.</span>
+        <div class="inputContainerFull">
+            <div class="inputIcon block left">
+                <i class="ion-edit"></i>
+            </div>
+            <input type="text" class="input" ng-model="newPayment.form.fields.description" placeholder="Nombre de registro monetario" />
+            <div class="clearBoth"></div>
+        </div>
+        <div class="formLabel" layout="column">
+            <span>Seleccione categoría</span>
+            <div class="categoryIcons" layout="row" layout-wrap>
+                <i ng-repeat="category in categories" class="{{getIcon(category.icon)}} md-icon-button categoryIcon" ng-class="{selected: newPayment.form.fields.category == category.id}" md-button ng-click="newPayment.setCategory(category)" title="{{category.name}}"></i>
+                <i class="ion-plus md-icon-button categoryIcon" md-button ng-click="newCategory.form.create()" title="Nueva categoría"></i>
+            </div>
+        </div>
+        <div class="formLabel" layout="row">
+            <span class="label" flex="33">Fecha</span>
+            <span class="label" flex="33">Monto</span>
+            <span class="label" flex>Pago con</span>
+        </div>
+        <div class="formInput" layout="row">
+            <div flex="33" class="inputContainer">
+                <div class="inputIcon block left">
+                    <i class="ion-calendar"></i>
+                </div>
+                <input type="date" class="input" />
+                <div class="clearBoth"></div>
+            </div>
+            <div flex="33" class="inputContainer">
+                <div class="inputIcon block left" ng-class="{ plus : newPayment.form.value == '+', minus : newPayment.form.value == '-' }">
+                    <i class="ion-plus" ng-if="newPayment.form.value == '+'"></i>
+                    <i class="ion-minus" ng-if="newPayment.form.value == '-'"></i>
+                </div>
+                <input type="number" class="input" placeholder="$" ng-model="newPayment.form.fields.amount"/>
+                <div class="clearBoth"></div>
+            </div>
+            <div class="paymentType" layout="row">
+                <i ng-repeat="method in methods" class="{{method.icon}} md-icon-button paymentIcon" ng-class="{selected: newPayment.form.fields.method == method.id}" md-button ng-click="newPayment.setMethod(method)" title="{{method.name}}"></i>
+            </div>
+        </div>
+        <md-button class="confirmPayment" ng-click="newPayment.create();">Crear</md-button>
+    </div>
+    <br>
+
+    <div class="paymentList" layou="column" ng-show="paymentTab == 1">
+        <span class="title">Historial de pagos</span>
+        <input class="search" type="text" />
+        <table class="tableContainer">
+            <thead>
+                <th ng-repeat="header in paymentHeaders" render="header.title"></th>
+            </thead>
+            <tbody ng-repeat="payment in payments">
+                <tr ng-class-even="'even'">
+                    <td render="getCategoryHTML(payment.category)"></td>
+                    <td>{{payment.description}}</td>
+                    <td>{{getMethod(payment.method)}}</td>
+                    <td>{{(payment.created * 1000) | date:'medium'}}</td>
+                    <td>{{payment.amount | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
