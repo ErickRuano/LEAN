@@ -1,10 +1,11 @@
 var express = require('express');
 var lusca = require('lusca');
 var bodyParser = require('body-parser');
+var Sequelize = require('sequelize');
  
 var app = express();
 
-app.use(express.static(__dirname + '/www'));        // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/angular1'));        // set the static files location /public/img will be /img for users
 app.use(bodyParser.urlencoded({'extended':'true'}));      // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                   // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
@@ -30,8 +31,10 @@ app.all('/*', function(req, res, next) {
 // Any URL's that do not follow the below pattern should be avoided unless you 
 // are sure that authentication is not needed
 app.all('/api/v1/*', [require('./middlewares/validateRequest')]);
+
+var model = require('./orm')(Sequelize);
  
-app.use('/', require('./routes'));
+app.use('/', require('./routes')(model));
  
 // If no route is matched by now, it must be a 404
 app.use(function(req, res, next) {
